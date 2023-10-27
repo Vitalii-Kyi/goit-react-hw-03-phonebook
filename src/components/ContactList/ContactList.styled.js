@@ -10,8 +10,7 @@ export const List = styled.ul`
 
   li {
     display: flex;
-    // color: blue;
-
+    
     span {
       padding: 2px;
       font-size: 16px;
@@ -24,15 +23,17 @@ export const List = styled.ul`
     }
 
     div span {
-      color: #000000;
+    color: #000000;
     }
 
     button {
       height: 24px;
       font-size: 12px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
       margin-left: 36px;
       padding: 2px 8px;
-      color: grey;
+      color: #000000;
       background-color: #d9ead3;
       border: none;
       border-radius: 4px;

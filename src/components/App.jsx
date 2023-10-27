@@ -3,17 +3,33 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { GlobalStyle, Box } from './GlobalStyle';
+import { Message } from './Message/Message';
+
+const LOCAL_STORAGE_KEY = 'contacts-list';
 
 export class App extends Component {
   state = {
-    contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const parsedContacts = JSON.parse(savedContacts);
+
+     if (parsedContacts !== null) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const nextContacts = this.state.contacts;
+    const prevContacts = prevState.contacts;
+
+    if (nextContacts !== prevContacts) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(nextContacts));
+    }
+  }
 
   handleAddContact = newContact => {
     const enteredName = newContact.name;
@@ -53,6 +69,7 @@ export class App extends Component {
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
+    const contactsLength = this.state.contacts.length;
 
     return (
       <Box>
@@ -61,10 +78,14 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter nameFilter={filter} onChange={this.handleChangeFilter} />
-        <ContactList
-          contacts={filteredContacts}
-          contactDelete={this.handleContactDelete}
-        />
+        {contactsLength === 0 ? (
+          <Message message="Contact's list is empty..." />
+        ) : (
+          <ContactList
+            contacts={filteredContacts}
+            contactDelete={this.handleContactDelete}
+          />
+        )}
 
         <GlobalStyle />
       </Box>

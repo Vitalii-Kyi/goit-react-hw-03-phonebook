@@ -5,13 +5,18 @@ export const FormThumb = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 420px;
+  width: 320px;
   margin: auto;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding: 20px 56px;
+  margin-bottom: 28px;
 
   button {
     font-weight: bold;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     padding: 4px 8px;
+    border: 1px solid #bcbcbc;
     border-radius: 4px;
     text-transform: uppercase;
     background-color: #d9ead3;
@@ -27,10 +32,10 @@ export const FormThumb = styled(Form)`
     font-style: oblique;
     font-weight: 500;
     margin-bottom: 12px;
- 
+
     b {
       font-size: 12px;
-      font style: normal;
+      font-style: normal;
       font-weight: 500;
       color: #bcbcbc;
       text-transform: lowercase;
@@ -38,9 +43,10 @@ export const FormThumb = styled(Form)`
 
     input {
       margin-top: 8px;
-      width: 100%
+      width: 100%;
       padding: 2px 12px;
+      border: 1px solid #bcbcbc;
       border-radius: 4px;
-  }
+    }
   }
 `;

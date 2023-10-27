@@ -22,6 +22,7 @@ h3,
 h4,
 p {
   margin: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 ul {
@@ -52,5 +53,10 @@ export const Box = styled.div`
     padding-right: 8px;
     margin: auto;
     margin-bottom: 24px;
+  }
+
+  b {
+    color: #000000;
+    font-size: 15px;
   }
 `;
